@@ -1,0 +1,127 @@
+{
+    // =========================================================================
+    // Waybar Configuration - Minimalist Dark Theme for Arch Linux / Hyprland
+    // Ottimizzato per Surface Pro 3: leggero, zero animazioni pesanti, basso consumo RAM/CPU
+    // =========================================================================
+
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "margin-top": 6,
+    "margin-left": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+    "spacing": 0,
+
+    // Ordine delle sezioni
+    "modules-left": [
+        "custom/arch",
+        "memory",
+        "cpu"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "battery",
+        "clock",
+        "network"
+    ],
+
+    // -------------------------------------------------------------------------
+    // Sinistra: Scritta Arch Linux, Percentuale RAM, Percentuale CPU
+    // -------------------------------------------------------------------------
+    "custom/arch": {
+        "format": "Arch Linux",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": "RAM {}%",
+        "tooltip": true,
+        "tooltip-format": "RAM utilizzata: {used:0.1f} GiB / {total:0.1f} GiB ({percentage}%)"
+    },
+
+    "cpu": {
+        "interval": 3,
+        "format": "CPU {}%",
+        "tooltip": true,
+        "tooltip-format": "Carico CPU: {usage}%"
+    },
+
+    // -------------------------------------------------------------------------
+    // Centro: Hyprland Workspaces (5 numeri fissi con evidenziazione attivo/occupato)
+    // -------------------------------------------------------------------------
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+        "format": "{id}",
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        }
+    },
+
+    // -------------------------------------------------------------------------
+    // Destra: Batteria, Orologio con calendario su hover, Wi-Fi con 4 barre
+    // -------------------------------------------------------------------------
+    "battery": {
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "format": "BAT {capacity}%",
+        "format-charging": "BAT {capacity}% ⚡",
+        "format-plugged": "BAT {capacity}% ⚡",
+        "format-full": "BAT 100%",
+        "tooltip": true,
+        "tooltip-format": "Stato: {status}\nCapacità: {capacity}%\nTempo rimanente: {time}"
+    },
+
+    "clock": {
+        "interval": 60,
+        "format": "{:%H:%M}",
+        "tooltip": true,
+        "tooltip-format": "<big><b>{:%A, %d %B %Y}</b></big>\n\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffffff'><b>{}</b></span>",
+                "days": "<span color='#cccccc'>{}</span>",
+                "weeks": "<span color='#555555'><b>W{}</b></span>",
+                "weekdays": "<span color='#888888'><b>{}</b></span>",
+                "today": "<span color='#0e0e0e' background='#ffffff'><b> {} </b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "{icon}",
+        "format-ethernet": "ETH",
+        "format-disconnected": "<span color='#555555'>▂▄▆█</span>",
+        "format-icons": [
+            "<span color='#555555'>▂▄▆█</span>",
+            "<span color='#ffffff'>▂</span><span color='#555555'>▄▆█</span>",
+            "<span color='#ffffff'>▂▄</span><span color='#555555'>▆█</span>",
+            "<span color='#ffffff'>▂▄▆</span><span color='#555555'>█</span>",
+            "<span color='#ffffff'>▂▄▆█</span>"
+        ],
+        "tooltip": true,
+        "tooltip-format-wifi": "Rete Wi-Fi: {essid}\nPotenza segnale: {signalStrength}%\nIP locale: {ipaddr}",
+        "tooltip-format-ethernet": "Interfaccia Ethernet: {ifname}\nIP locale: {ipaddr}",
+        "tooltip-format-disconnected": "Wi-Fi: Disconnesso"
+    }
+}
+

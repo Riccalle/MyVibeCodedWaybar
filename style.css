@@ -1,0 +1,165 @@
+/* =========================================================================
+   Waybar CSS - Dark Minimalist Theme
+   Design ottimizzato per Surface Pro 3 (Arch Linux / Hyprland)
+   Font di sistema: JetBrains Mono
+   ========================================================================= */
+
+/* Reset globale: nessuna animazione inutile per azzerare l'uso di CPU/RAM */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: none;
+    transition: none;
+}
+
+/* Finestra principale trasparente per isolare visivamente le celle */
+window#waybar {
+    background-color: transparent;
+    color: #eaeaea;
+}
+
+/* -------------------------------------------------------------------------
+   Celle unificate: sfondo nero profondo, bordo grigio 2px, angoli smussati
+   ------------------------------------------------------------------------- */
+#custom-arch,
+#memory,
+#cpu,
+#workspaces,
+#battery,
+#clock,
+#network {
+    background-color: #0e0e0e;
+    border: 2px solid #3c3c3c;
+    border-radius: 8px;
+    padding: 3px 12px;
+    margin: 4px 3px;
+    color: #eaeaea;
+}
+
+/* Sezione Arch Linux */
+#custom-arch {
+    font-weight: 700;
+    padding: 3px 14px;
+}
+
+/* -------------------------------------------------------------------------
+   Centro: Workspaces Hyprland
+   - Contenitore nero con bordo 2px e angoli smussati
+   - 5 numeri fissi
+   - Inattivi/vuoti: grigio scuro discreto
+   - Con finestre aperte (occupied): colore ciano/azzurro distinto
+   - Corrente (attivo): sfondo bianco pieno e testo nero scuro
+   ------------------------------------------------------------------------- */
+#workspaces {
+    padding: 2px 4px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #555555;
+    border-radius: 6px;
+    padding: 1px 8px;
+    margin: 1px 2px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: none;
+}
+
+/* Workspace vuoti o persistenti */
+#workspaces button.empty,
+#workspaces button.persistent {
+    color: #555555;
+    background-color: transparent;
+}
+
+/* Workspace occupati (contengono finestre aperte, non attivi) */
+#workspaces button.occupied,
+#workspaces button:not(.empty) {
+    color: #61afef; /* Azzurro distinto dal workspace corrente */
+    background-color: rgba(97, 175, 239, 0.08);
+}
+
+/* Hover sui tasti */
+#workspaces button:hover {
+    background-color: #262626;
+    color: #ffffff;
+}
+
+/* Workspace attualmente attivo (priorità su occupied ed empty) */
+#workspaces button.active {
+    color: #0e0e0e;
+    background-color: #ffffff;
+    font-weight: 700;
+}
+
+#workspaces button.active:hover {
+    color: #0e0e0e;
+    background-color: #ffffff;
+}
+
+/* Eventuale stato urgent */
+#workspaces button.urgent {
+    color: #ffffff;
+    background-color: #e06c75;
+}
+
+/* -------------------------------------------------------------------------
+   Destra: Batteria
+   - Mantiene l'estetica nera profonda
+   - Se la batteria è critica: bordo e testo diventano rossi (senza sfondo accecante)
+   - Se in carica: sottile accento verde
+   ------------------------------------------------------------------------- */
+#battery.warning:not(.charging) {
+    color: #e5c07b;
+    border-color: #e5c07b;
+}
+
+#battery.critical:not(.charging) {
+    color: #e06c75;
+    border-color: #e06c75;
+    background-color: #0e0e0e; /* Mantiene lo sfondo nero */
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #98c379;
+    border-color: #98c379;
+}
+
+/* -------------------------------------------------------------------------
+   Destra: Wi-Fi con 4 barre
+   ------------------------------------------------------------------------- */
+#network {
+    letter-spacing: 1px;
+}
+
+#network.disconnected {
+    color: #555555;
+}
+
+/* -------------------------------------------------------------------------
+   Tooltip (hover su data/ora/calendario, wifi, batteria, cpu, ram)
+   - Stile coordinato: box nero, bordo 2px grigio, font JetBrains Mono
+   ------------------------------------------------------------------------- */
+tooltip {
+    background-color: #0e0e0e;
+    border: 2px solid #3c3c3c;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: #eaeaea;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    padding: 4px;
+}
+
