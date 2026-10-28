@@ -66,11 +66,9 @@
 
     // -------------------------------------------------------------------------
     // Destra: Batteria, Orologio con calendario su hover, Wi-Fi con 4 barre
-    // NOTA: Sul Surface Pro 3 la batteria si chiama BAT1 (o talvolta BAT0).
     // -------------------------------------------------------------------------
     "battery": {
-        "bat": "BAT1",
-        "interval": 10,
+        "interval": 5,
         "states": {
             "warning": 25,
             "critical": 10
@@ -78,8 +76,9 @@
         "format": "BAT {capacity}%",
         "format-charging": "BAT {capacity}% ⚡",
         "format-plugged": "BAT {capacity}% ⚡",
+        "format-not-charging": "BAT {capacity}% ⚡",
         "format-discharging": "BAT {capacity}%",
-        "format-full": "BAT 100%",
+        "format-full": "BAT 100% ⚡",
         "tooltip": true,
         "tooltip-format": "Stato: {status}\nCapacità: {capacity}%\nTempo rimanente: {time}"
     },

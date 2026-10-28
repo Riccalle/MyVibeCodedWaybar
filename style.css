@@ -125,7 +125,8 @@ window#waybar {
 }
 
 #battery.charging,
-#battery.plugged {
+#battery.plugged,
+#battery.not-charging {
     color: #98c379;
     border-color: #98c379;
 }

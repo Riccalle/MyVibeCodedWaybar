@@ -45,14 +45,14 @@ killall waybar && waybar &
 
 ## Risoluzione Problemi Comuni
 
-### 1. Batteria non visibile (quadrato nero vuoto)
-Sui dispositivi **Microsoft Surface**, il driver di sistema assegna quasi sempre la batteria al percorso **`BAT1`** anziché al consueto `BAT0` dei portatili tradizionali.
-La configurazione ora ha già impostato `"bat": "BAT1"`.
-Se ancora non compare, verifica il nome esatto digitando da terminale:
+### 1. Batteria non visibile o testo vuoto
+La configurazione ora lascia a Waybar l'auto-rilevamento della batteria presente (di solito `BAT0` sui portatili standard, oppure `BAT1`).
+Inoltre, sono stati gestiti esplicitamente tutti gli stati energetici del kernel Linux (`format-not-charging`, `format-full`, `format-charging`, `format-discharging`): in questo modo, quando il portatile è collegato alla corrente o raggiunge il 100%, l'etichetta non scompare mai e continua a mostrare la percentuale.
+Se per qualsiasi motivo sul tuo hardware volessi forzare il dispositivo, controlla il nome con:
 ```bash
 ls /sys/class/power_supply
 ```
-Se vedi ad esempio `BAT0`, apri `~/.config/waybar/config.jsonc` e imposta `"bat": "BAT0"`.
+E se necessario puoi aggiungere `"bat": "BAT0"` (o il nome visualizzato) dentro il blocco `"battery"` in `config.jsonc`.
 
 ### 2. Spazio vuoto eccessivo tra Waybar e il terminale / applicazioni
 Questo spazio dipende principalmente da **Hyprland**, che di default applica dei margini esterni ampi (`gaps_out = 20`).
